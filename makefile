@@ -3,14 +3,14 @@ FC=gfortran
 # edrop
 #---------
 #
-OBJ = thread.o bacoli.o bacoli-aux.o driver-gridmesh.o d1mach_i1mach.o
+OBJ = film.o bacoli.o bacoli-aux.o driver-gridmesh.o d1mach_i1mach.o
 #
 FFLAGS = -O3 -g
 #
 PDEtest: $(OBJ)
 	$(FC) $(FFLAGS) -o PDEtest $(OBJ)	
-thread.o: thread.f
-	$(FC) $(FFLAGS) -c thread.f
+film.o: film.f
+	$(FC) $(FFLAGS) -c film.f
 bacoli.o: bacoli.f
 	$(FC) $(FFLAGS) -c bacoli.f
 bacoli-aux.o: bacoli-aux.f
