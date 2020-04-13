@@ -81,7 +81,7 @@ c-----------------------------------------------------------------------
         implicit none
 c constants:
         integer                 npde
-        parameter              (npde = 3)
+        parameter              (npde = 2)
 c                               number of PDEs in the system.
         double precision        xa
         parameter              (xa = 0d0)
@@ -94,8 +94,8 @@ c                               the right spatial boundary point.
 c                               the start of the time domain, used to
 c                               initialise t0.
         integer                 nintinit
-        parameter              (nintinit = 200)
-c                               the number of subintervals in the
+        parameter              (nintinit = 20)
+c       the number of subintervals in the
 c                               initial uniform mesh.
         integer                 nintmx
         parameter              (nintmx = 1000)
@@ -110,13 +110,13 @@ c                               note that the solution approximation is
 c                               a piecewise polynomial of degree kcol-1,
 c                               so nderiv is limited.
         integer                 nxout
-        parameter              (nxout = 201)
+        parameter              (nxout = 1001)
 c                               number of almost uniformly distributed
 c                               points along the spatial domain to
 c                               output approximated values. the first
 c                               point is not tstart, but close to it.
         integer                 ntout
-        parameter              (ntout = 41)
+        parameter              (ntout = 61)
 c                               number of uniformly distributed points
 c                               along the temporal domain to output
 c                               approximated values.
@@ -260,15 +260,15 @@ c-----------------------------------------------------------------------
 c  Common block initializations
 
       eps = 1d-3
-      del = 0.1d0
+      del = 0.2d0
       epsln = 1d-7
-      RL = 10.d0
-      a1 = 1.d0  ! ram
+      RL = xb
+      a1 = 30.d0
       a2 = 30.d0
       d1 = 1.5d0
       d2 = 1.2d0
-      r = 0.00001d0
-      c = 1.d0/r
+      r = 1000.d0
+      c = 0.96d0
       n = 1.d0
       pe1 = 10000.d0
       pe2 = 10000.d0
@@ -283,8 +283,8 @@ c      write(*,*) 'Please input the error tolerance.'
 c      read(*,*,err=999) atol(1)
 c      rtol(1) = atol(1)
 
-      tstop = 40.0
-      atol(1) = 0.001d0
+      tstop = 1000.0
+      atol(1) = 0.00001d0
       rtol(1) = atol(1)
 c-----------------------------------------------------------------------
 c  BACOLI parameter initializations
